@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 LocationInfo location = locationTracker.locationInfo;
-                SharedPreferencesManager.saveHomeToPreferences(MainActivity.this,location);
+                SharedPreferencesManager.saveHomeToPreferences(MainActivity.this, location);
                 Button clearHome = findViewById(R.id.clear_button);
 
                 LocationInfo homeLocationInfo = locationTracker.locationInfo;
                 homeLocationView.setText("your home location is defined as " + homeLocationInfo.getLatitude() + " "
-                    + homeLocationInfo.getLongitude());
+                        + homeLocationInfo.getLongitude());
                 homeLocationView.setVisibility(View.VISIBLE);
                 clearHome.setVisibility(View.VISIBLE);
             }
@@ -102,19 +102,20 @@ public class MainActivity extends AppCompatActivity {
         this.registerReceiver(broadcastReceiver, filter);
 
         checkHomeLocation();
-
-
     }
 
     public static void putHomeButton() {
         homeLocationButton.setVisibility(View.VISIBLE);
     }
 
+    public static void removeHomeButton() {
+        homeLocationButton.setVisibility(View.INVISIBLE);
+    }
+
     private void checkHomeLocation() {
         // if there is home location
         LocationInfo homeLocationInfo = SharedPreferencesManager.getHomeLocationFromPreferences(MainActivity.this);
         if (homeLocationInfo != null) {
-//            final TextView homeLocation = findViewById(R.id.home_location);
             String latitude = homeLocationInfo.getLatitude();
             String longitude = homeLocationInfo.getLongitude();
             homeLocationView.setText("your home location is defined as " + latitude + " " + longitude);
@@ -193,11 +194,11 @@ public class MainActivity extends AppCompatActivity {
                 longitudeView.setVisibility(View.INVISIBLE);
                 accuracyView.setVisibility(View.INVISIBLE);
             }
-            if (action.equals("new_location")) {
+            if (action.equals("new_location") || action.equals("started")) {
                 LocationInfo location = locationTracker.locationInfo;
-                if (location != null) {
-                    Log.e("a", location.getLatitude()+"lat");
-                    Log.e("a", location.getLongitude()+"long");
+                if (location != null && location.getLatitude() != null) {
+                    Log.e("a", location.getLatitude() + "lat");
+                    Log.e("a", location.getLongitude() + "long");
                     latitudeView.setText("latitude: " + location.getLatitude());
                     longitudeView.setText("longitude: " + location.getLongitude());
                     accuracyView.setText("accuracy:" + location.getAccuracy());

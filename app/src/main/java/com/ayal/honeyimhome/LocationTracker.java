@@ -32,11 +32,6 @@ public class LocationTracker {
         }
         Intent startedIntent = new Intent("started");
         context.sendBroadcast(startedIntent);
-//        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        double longitude = location.getLongitude();
-//        double latitude = location.getLatitude();
-
-
     }
 
     public void stopTracking() {
@@ -54,6 +49,9 @@ public class LocationTracker {
 
             if (accuracy < 50) {
                 MainActivity.putHomeButton();
+            }
+            else{
+                MainActivity.removeHomeButton();
             }
             Intent locationIntent = new Intent("new_location");
             context.sendBroadcast(locationIntent);
