@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/clear_home"
         android:visibility="invisible"
+        android:onClick="onClickClearHome"
         app:layout_constraintTop_toBottomOf="@+id/home_location"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -37,12 +39,43 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <Button
-        android:id="@+id/set_location"
+        android:id="@+id/set_home_location_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/set_location_as_home"
         android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@+id/location_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <TextView
+        android:id="@+id/latitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="latitude: "
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/set_home_location_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/longitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="longitude: "
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/latitude_text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/accuracy_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="accuracy: "
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/longitude_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 

@@ -12,6 +12,10 @@ public class LocationInfo {
         this.accuracy = accuracy;
     }
 
+    public LocationInfo() {
+
+    }
+
     public String getAccuracy() {
         return accuracy;
     }
